@@ -1,53 +1,40 @@
-
 import json
 import os
-from typing import Callable
 
-import aiofiles
 import aiohttp
-import ffmpeg
 import requests
 import wget
-from PIL import Image, ImageDraw, ImageFont
-from pyrogram import Client, filters
-from pyrogram.errors import UserAlreadyParticipant
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from Python_ARQ import ARQ
-from youtube_search import YoutubeSearch
-from CoffinXMusic.modules.playusic.modules.play import generate_cover
-from CoffinXMusic.modules.play import arq
-from CoffinXMusic.modules.play import cb_admin_check
-from CoffinXMusic.modules.play import transcode
-from CoffinXMusic.modules.play import convert_seconds
-from CoffinXMusic.modules.play import time_to_seconds
-from CoffinXMusic.modules.play import changeImageSize
 from CoffinXMusic.config import BOT_NAME as bn
 from CoffinXMusic.config import DURATION_LIMIT
 from CoffinXMusic.config import UPDATES_CHANNEL as updateschannel
 from CoffinXMusic.config import que
-from CoffinXMusic.function.admins import admins as a
 from CoffinXMusic.helpers.admins import get_administrators
-from CoffinXMusic.helpers.channelmusic import get_chat_id
 from CoffinXMusic.helpers.decorators import authorized_users_only
-from CoffinXMusic.helpers.filters import command, other_filters
 from CoffinXMusic.helpers.gets import get_file_name
+from CoffinXMusic.modules.play import arq, cb_admin_check
+from CoffinXMusic.modules.playusic.modules.play import generate_cover
 from CoffinXMusic.services.callsmusic import callsmusic, queues
 from CoffinXMusic.services.callsmusic.callsmusic import client as USER
 from CoffinXMusic.services.converter.converter import convert
 from CoffinXMusic.services.downloaders import youtube
+from pyrogram import Client, filters
+from pyrogram.errors import UserAlreadyParticipant
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from youtube_search import YoutubeSearch
 
 chat_id = None
 
 
-
-@Client.on_message(filters.command(["channelplaylist","cplaylist"]) & filters.group & ~filters.edited)
+@Client.on_message(
+    filters.command(["channelplaylist", "cplaylist"]) & filters.group & ~filters.edited
+)
 async def playlist(client, message):
     try:
-      lel = await client.get_chat(message.chat.id)
-      lol = lel.linked_chat.id
+        lel = await client.get_chat(message.chat.id)
+        lol = lel.linked_chat.id
     except:
-      message.reply("Is this cat even linked?")
-      return
+        message.reply("Is this cat even linked?")
+        return
     global que
     queue = que.get(lol)
     if not queue:
@@ -112,15 +99,17 @@ def r_ply(type_):
     return mar
 
 
-@Client.on_message(filters.command(["channelcurrent","ccurrent"]) & filters.group & ~filters.edited)
+@Client.on_message(
+    filters.command(["channelcurrent", "ccurrent"]) & filters.group & ~filters.edited
+)
 async def ee(client, message):
     try:
-      lel = await client.get_chat(message.chat.id)
-      lol = lel.linked_chat.id
-      conv = lel.linked_chat
+        lel = await client.get_chat(message.chat.id)
+        lol = lel.linked_chat.id
+        conv = lel.linked_chat
     except:
-      await message.reply("Is chat even linked")
-      return
+        await message.reply("Is chat even linked")
+        return
     queue = que.get(lol)
     stats = updated_stats(conv, queue)
     if stats:
@@ -129,17 +118,19 @@ async def ee(client, message):
         await message.reply("No VC instances running in this chat")
 
 
-@Client.on_message(filters.command(["channelplayer","cplayer"]) & filters.group & ~filters.edited)
+@Client.on_message(
+    filters.command(["channelplayer", "cplayer"]) & filters.group & ~filters.edited
+)
 @authorized_users_only
 async def settings(client, message):
     playing = None
     try:
-      lel = await client.get_chat(message.chat.id)
-      lol = lel.linked_chat.id
-      conv = lel.linked_chat
+        lel = await client.get_chat(message.chat.id)
+        lol = lel.linked_chat.id
+        conv = lel.linked_chat
     except:
-      await message.reply("Is chat even linked")
-      return
+        await message.reply("Is chat even linked")
+        return
     queue = que.get(lol)
     stats = updated_stats(conv, queue)
     if stats:
@@ -156,11 +147,11 @@ async def settings(client, message):
 async def p_cb(b, cb):
     global que
     try:
-      lel = await client.get_chat(cb.message.chat.id)
-      lol = lel.linked_chat.id
-      conv = lel.linked_chat
+        lel = await client.get_chat(cb.message.chat.id)
+        lol = lel.linked_chat.id
+        conv = lel.linked_chat
     except:
-      return    
+        return
     que.get(lol)
     type_ = cb.matches[0].group(1)
     cb.message.chat.id
@@ -202,18 +193,17 @@ async def m_cb(b, cb):
     ):
         chet_id = int(chat.title[13:])
     else:
-      try:
-        lel = await b.get_chat(cb.message.chat.id)
-        lol = lel.linked_chat.id
-        conv = lel.linked_chat
-        chet_id = lol
-      except:
-        return
+        try:
+            lel = await b.get_chat(cb.message.chat.id)
+            lol = lel.linked_chat.id
+            conv = lel.linked_chat
+            chet_id = lol
+        except:
+            return
     qeue = que.get(chet_id)
     type_ = cb.matches[0].group(1)
     cb.message.chat.id
     m_chat = cb.message.chat
-    
 
     the_data = cb.message.reply_markup.inline_keyboard[1][0].callback_data
     if type_ == "cpause":
@@ -225,9 +215,7 @@ async def m_cb(b, cb):
             callsmusic.pytgcalls.pause_stream(chet_id)
 
             await cb.answer("Music Paused!")
-            await cb.message.edit(
-                updated_stats(conv, qeue), reply_markup=r_ply("play")
-            )
+            await cb.message.edit(updated_stats(conv, qeue), reply_markup=r_ply("play"))
 
     elif type_ == "cplay":
         if (chet_id not in callsmusic.pytgcalls.active_calls) or (
@@ -338,24 +326,26 @@ async def m_cb(b, cb):
             await cb.answer("Chat is not connected!", show_alert=True)
 
 
-@Client.on_message(filters.command(["channelplay","cplay"])  & filters.group & ~filters.edited)
+@Client.on_message(
+    filters.command(["channelplay", "cplay"]) & filters.group & ~filters.edited
+)
 @authorized_users_only
 async def play(_, message: Message):
     global que
     lel = await message.reply("🔄 **Processing**")
 
     try:
-      conchat = await _.get_chat(message.chat.id)
-      conv = conchat.linked_chat
-      conid = conchat.linked_chat.id
-      chid = conid
+        conchat = await _.get_chat(message.chat.id)
+        conv = conchat.linked_chat
+        conid = conchat.linked_chat.id
+        chid = conid
     except:
-      await message.reply("Is chat even linked")
-      return
+        await message.reply("Is chat even linked")
+        return
     try:
-      administrators = await get_administrators(conv)
+        administrators = await get_administrators(conv)
     except:
-      await message.reply("Am I admin of Channel")
+        await message.reply("Am I admin of Channel")
     try:
         user = await USER.get_me()
     except:
@@ -372,7 +362,6 @@ async def play(_, message: Message):
                     await lel.edit(
                         "<b>Remember to add helper to your channel</b>",
                     )
-                    pass
 
                 try:
                     invitelink = await _.export_chat_invite_link(chid)
@@ -521,24 +510,26 @@ async def play(_, message: Message):
         return await lel.delete()
 
 
-@Client.on_message(filters.command(["channeldplay","cdplay"]) & filters.group & ~filters.edited)
+@Client.on_message(
+    filters.command(["channeldplay", "cdplay"]) & filters.group & ~filters.edited
+)
 @authorized_users_only
 async def deezer(client: Client, message_: Message):
     global que
     lel = await message_.reply("🔄 **Processing**")
 
     try:
-      conchat = await client.get_chat(message_.chat.id)
-      conid = conchat.linked_chat.id
-      conv = conchat.linked_chat
-      chid = conid
+        conchat = await client.get_chat(message_.chat.id)
+        conid = conchat.linked_chat.id
+        conv = conchat.linked_chat
+        chid = conid
     except:
-      await message_.reply("Is chat even linked")
-      return
+        await message_.reply("Is chat even linked")
+        return
     try:
-      administrators = await get_administrators(conv)
+        administrators = await get_administrators(conv)
     except:
-      await message.reply("Am I admin of Channel") 
+        await message.reply("Am I admin of Channel")
     try:
         user = await USER.get_me()
     except:
@@ -555,7 +546,6 @@ async def deezer(client: Client, message_: Message):
                     await lel.edit(
                         "<b>Remember to add helper to your channel</b>",
                     )
-                    pass
                 try:
                     invitelink = await client.export_chat_invite_link(chid)
                 except:
@@ -649,23 +639,25 @@ async def deezer(client: Client, message_: Message):
     os.remove("final.png")
 
 
-@Client.on_message(filters.command(["channelsplay","csplay"]) & filters.group & ~filters.edited)
+@Client.on_message(
+    filters.command(["channelsplay", "csplay"]) & filters.group & ~filters.edited
+)
 @authorized_users_only
 async def jiosaavn(client: Client, message_: Message):
     global que
     lel = await message_.reply("🔄 **Processing**")
     try:
-      conchat = await client.get_chat(message_.chat.id)
-      conid = conchat.linked_chat.id
-      conv = conchat.linked_chat
-      chid = conid
+        conchat = await client.get_chat(message_.chat.id)
+        conid = conchat.linked_chat.id
+        conv = conchat.linked_chat
+        chid = conid
     except:
-      await message_.reply("Is chat even linked")
-      return
+        await message_.reply("Is chat even linked")
+        return
     try:
-      administrators = await get_administrators(conv)
+        administrators = await get_administrators(conv)
     except:
-      await message.reply("Am I admin of Channel")
+        await message.reply("Am I admin of Channel")
     try:
         user = await USER.get_me()
     except:
@@ -682,7 +674,6 @@ async def jiosaavn(client: Client, message_: Message):
                     await lel.edit(
                         "<b>Remember to add helper to your channel</b>",
                     )
-                    pass
                 try:
                     invitelink = await client.export_chat_invite_link(chid)
                 except:
