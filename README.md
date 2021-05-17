@@ -42,4 +42,4 @@ $ npm i -g npm
 $ python(3) -m CoffinXmusic
 ```
 
-<p align="center"><a href="https://github.com/theshashankk/CoffinXmusic/blob/main/bot_cmd.txt"> <img src="https://img.shields.io/badge/Command%20Of%20CoffinX-Op-orange?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
+<p align="center"><a href="https://github.com/theshashankk/CoffinXmusic/blob/main/bot_cmd.txt"> <img src="https://img.shields.io/badge/Command%20Of%20CoffinX-Op-orange?style=for-the-badge&logo=pyrogram" width="220" height="38.45"/></a></p>
