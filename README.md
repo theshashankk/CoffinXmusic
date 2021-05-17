@@ -13,3 +13,5 @@ A telegram voice chat bot that can play music in ur VOICE CHAT
 - Control with buttons
 - Userbot auto join
 - Channel Music Play 
+
+[![Stars](https://img.shields.io/github/stars/TheShashankk/CoffinXmusic?style=flat-square&color=yellow)](https://github.com/theshashankk/CoffinXmusic/stargazers)
