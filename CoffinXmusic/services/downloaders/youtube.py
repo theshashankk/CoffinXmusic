@@ -2,8 +2,8 @@
 
 from os import path
 
-from DaisyXMusic.config import DURATION_LIMIT
-from DaisyXMusic.helpers.errors import DurationLimitError
+from CoffinXmusic.config import DURATION_LIMIT
+from CoffinXMusic.helpers.errors import DurationLimitError
 from youtube_dl import YoutubeDL
 
 ydl_opts = {
