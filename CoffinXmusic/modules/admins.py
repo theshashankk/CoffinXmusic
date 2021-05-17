@@ -16,15 +16,14 @@
 
 
 from asyncio.queues import QueueEmpty
-from CoffinXMusic.config import que
-from pyrogram import Client, filters
-from pyrogram.types import Message
 
 from CoffinXMusic.function.admins import set
 from CoffinXMusic.helpers.channelmusic import get_chat_id
 from CoffinXMusic.helpers.decorators import authorized_users_only, errors
 from CoffinXMusic.helpers.filters import command, other_filters
 from CoffinXMusic.services.callsmusic import callsmusic
+from pyrogram import Client, filters
+from pyrogram.types import Message
 
 
 @Client.on_message(filters.command("adminreset"))
