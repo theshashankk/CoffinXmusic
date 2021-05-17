@@ -503,10 +503,10 @@ async def play(_, message: Message):
             photo="final.png",
             reply_markup=keyboard,
             caption="**Playing**\n**".format(
-            caption="**🏷 Name: {title}
-            caption="**⏱ Duration: {duration}
-            caption="**💡 Status: playing  
-            caption="**🎧 Requested by: {from_user.mention}   
+            caption="**🏷 Name: {title}**"
+            caption="**⏱ Duration: {duration}**"
+            caption="**💡 Status: playing**"  
+            caption="**🎧 Requested by: {}**"   
                 message.from_user.mention()
             ),
         )
