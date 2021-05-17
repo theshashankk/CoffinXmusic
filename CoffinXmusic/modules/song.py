@@ -1,4 +1,3 @@
-
 from __future__ import unicode_literals
 
 import asyncio
@@ -13,13 +12,12 @@ import aiohttp
 import requests
 import wget
 import youtube_dl
+from CoffinXMusic.modules.play import arq
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
-
-from CoffinXMusic.modules.play import arq
 
 
 @Client.on_message(filters.command("song") & ~filters.channel)
