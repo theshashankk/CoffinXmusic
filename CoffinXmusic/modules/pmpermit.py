@@ -1,7 +1,6 @@
+from CoffinXMusic.services.callsmusic.callsmusic import client as USER
 from pyrogram import filters
 from pyrogram.types import Message
-
-from CoffinXMusic.services.callsmusic.callsmusic import client as USER
 
 
 @USER.on_message(filters.text & filters.private & ~filters.me & ~filters.bot)
