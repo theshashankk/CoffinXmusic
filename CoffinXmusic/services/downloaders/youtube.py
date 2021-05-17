@@ -2,9 +2,10 @@
 
 from os import path
 
-from CoffinXmusic.config import DURATION_LIMIT
 from CoffinXMusic.helpers.errors import DurationLimitError
 from youtube_dl import YoutubeDL
+
+from CoffinXmusic.config import DURATION_LIMIT
 
 ydl_opts = {
     "format": "bestaudio[ext=m4a]",
