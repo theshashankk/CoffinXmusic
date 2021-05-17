@@ -1,10 +1,9 @@
 from typing import Callable
 
-from pyrogram import Client
-from pyrogram.types import Message
-
 from CoffinXMusic.config import SUDO_USERS
 from CoffinXMusic.helpers.admins import get_administrators
+from pyrogram import Client
+from pyrogram.types import Message
 
 
 def errors(func: Callable) -> Callable:
