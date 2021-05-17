@@ -502,7 +502,11 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ **Playing** the song requested by {} via Youtube Music 😜 in Linked Channel".format(
+            caption="**Playing**\n**".format(
+            caption="**🏷 Name: {title}
+            caption="**⏱ Duration: {duration}
+            caption="**💡 Status: playing  
+            caption="**🎧 Requested by: {from_user.mention}   
                 message.from_user.mention()
             ),
         )
