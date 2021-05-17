@@ -15,4 +15,4 @@ A telegram voice chat bot that can play music in ur VOICE CHAT
 - Channel Music Play 
 
 [![Stars](https://img.shields.io/github/stars/TheShashankk/CoffinXmusic?style=flat-square&color=yellow)](https://github.com/theshashankk/CoffinXmusic/stargazers)
-[![Forks](https://img.shields.io/github/forks/TheShashankk/CoffinXmusic?style=flat-square&color=orange)](https://github.com/theshashankk/CoffinXmusic/fork)
+[![Forks](https://img.shields.io/github/forks/TheShashankk/CoffinXmusic?style=circle-square&color=orange)](https://github.com/theshashankk/CoffinXmusic/fork)
