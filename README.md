@@ -14,6 +14,14 @@ A telegram voice chat bot that can play music in ur VOICE CHAT
 - Userbot auto join
 - Channel Music Play 
 
-[![Stars](https://img.shields.io/github/stars/TheShashankk/CoffinXmusic?style=flat-square&color=yellow)](https://github.com/theshashankk/CoffinXmusic/stargazers)
-[![Forks](https://img.shields.io/github/forks/TheShashankk/CoffinXmusic?style=circle-square&color=orange)](https://github.com/theshashankk/CoffinXmusic/fork)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/theshashankk/Coffinxmusic/graphs/commit-activity)
+</p>
+
+<p align="center"><a href="https://t.me/DaisySupport_Official"><img src="https://telegra.ph/file/23448c98735bd81df47e7.jpg" width="400"></a></p>
+<p align="center">
+    <a href="https://app.codacy.com/manual/teamdaisyx/daisyx/dashboard"> <img src="https://img.shields.io/codacy/grade/4d58f2a402b54aed8a7d95f7add45a81?color=brightgreen&logo=codacy&logoColor=green&style=for-the-badge" alt="Codacy" /></a>
+    <a href="https://github.com/teamdaisyx/daisyx"> <img src="https://img.shields.io/github/repo-size/teamdaisyx/daisyx?color=orange&logo=github&logoColor=green&style=for-the-badge" /></a>
+    <a href="https://github.com/teamdaisyx/daisyx/commits/inukaasith"> <img src="https://img.shields.io/github/last-commit/teamdaisyx/daisyx?color=brown&logo=github&logoColor=green&style=for-the-badge" /></a>
+    <a href="https://github.com/teamdaisyx/daisyx/issues"> <img src="https://img.shields.io/github/issues/teamdaisyx/daisyx?color=blueviolet&logo=github&logoColor=green&style=for-the-badge" /></a>
+    <a href="https://github.com/teamdaisyx/daisyx/network/members"> <img src="https://img.shields.io/github/forks/teamdaisyx/daisyx?color=red&logo=github&logoColor=green&style=for-the-badge" /></a>  
+    <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?color=yellow&label=telethon&logo=python&logoColor=green&style=for-the-badge" /></a>
+</p>
