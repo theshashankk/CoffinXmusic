@@ -1,10 +1,8 @@
-
 from typing import List
-
-from pyrogram.types import Chat, User
 
 from CoffinXMusic.function.admins import get as gett
 from CoffinXMusic.function.admins import set
+from pyrogram.types import Chat, User
 
 
 async def get_administrators(chat: Chat) -> List[User]:
