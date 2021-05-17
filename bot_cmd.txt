@@ -1,4 +1,4 @@
-[![CoffinXmusic](https://telegra.ph/file/f1ed6fe19d2538335af92.jpg)
+
 
 /play <song name> - play song you requested
 /play <reply to audio> - play replied file
