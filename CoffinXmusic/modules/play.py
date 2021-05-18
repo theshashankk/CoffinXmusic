@@ -549,12 +549,12 @@ async def play(_, message: Message):
             photo="final.png",
             reply_markup=keyboard,
             caption="**Currently Playing**"
-            caption="**Song : {}.format(
+            caption="**Song : {}**".format(
                 title()
             caption="**Duration :{}**".format(
                 duration()
-            caption="**Status :Playing🎵"
-            caption="**Requested By : {}".format(
+            caption="**Status :Playing🎵**"
+            caption="**Requested By : {}**".format(
                 message.from_user.metion()
             ),
         )
